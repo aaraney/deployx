@@ -3,8 +3,13 @@ variable "GO_VERSION" {
   default = null
 }
 
+variable "DOCKERD_VERSION" {
+  # default ARG value set in Dockerfile
+  default = null
+}
+
 variable "VERSION_TAG" {
-  default = "0.0.1"
+  default = "0.0.2"
 }
 
 variable "DOCKERFILE" {
@@ -20,7 +25,7 @@ target "default" {
     GO_VERSION = GO_VERSION
   }
   pull = true
-  target = "shell"
+  target = "dockerd-release"
   dockerfile = "${DOCKERFILE}"
   output = ["type=image"]
 
