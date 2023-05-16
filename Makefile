@@ -20,3 +20,7 @@ install: build
 .PHONY: uninstall
 uninstall:
 	rm $(install_target)
+
+.PHONY: clean
+clean:
+	rm -rf $(build_path)
