@@ -33,6 +33,17 @@ and copy the `docker-deployx` binary from the `./build` directory to one of the 
 - `/usr/local/lib/docker/cli-plugins` OR `/usr/local/libexec/docker/cli-plugins`
 - `/usr/lib/docker/cli-plugins` OR `/usr/libexec/docker/cli-plugins`
 
+### Brew
+
+Install using `homebrew`:
+
+```shell
+brew install aaraney/tap/deployx
+
+# install as docker cli plugin. invoke using 'docker deployx'
+ln -s $(which deployx) $HOME/.docker/cli-plugin/docker-deployx
+```
+
 ### Dockerfile
 
 The easiest way to get started it using a pre-built docker image and `deployx` in standalone mode.
