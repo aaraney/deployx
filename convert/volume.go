@@ -34,8 +34,11 @@ func convertVolumeToMount(
 		return handleTmpfsToMount(volume)
 	case "npipe":
 		return handleNpipeToMount(volume)
+	case "cluster":
+		return handleClusterToMount(volume)
 	}
-	return mount.Mount{}, errors.New("volume type must be volume, bind, tmpfs, or npipe")
+
+	return mount.Mount{}, errors.New("volume type must be volume, bind, tmpfs, npipe, or cluster")
 }
 
 func handleVolumeToMount(
@@ -139,6 +142,25 @@ func handleNpipeToMount(volume composego.ServiceVolumeConfig) (mount.Mount, erro
 	}
 	if volume.Tmpfs != nil {
 		return mount.Mount{}, errors.New("tmpfs options are incompatible with type npipe")
+	}
+	if volume.Bind != nil {
+		result.BindOptions = &mount.BindOptions{
+			Propagation: mount.Propagation(volume.Bind.Propagation),
+		}
+	}
+	return result, nil
+}
+
+func handleClusterToMount(volume composego.ServiceVolumeConfig) (mount.Mount, error) {
+	result := createMountFromVolume(volume)
+	if volume.Source == "" {
+		return mount.Mount{}, errors.New("invalid cluster source, source cannot be empty")
+	}
+	if volume.Volume != nil {
+		return mount.Mount{}, errors.New("volume options are incompatible with type cluster")
+	}
+	if volume.Tmpfs != nil {
+		return mount.Mount{}, errors.New("tmpfs options are incompatible with type cluster")
 	}
 	if volume.Bind != nil {
 		result.BindOptions = &mount.BindOptions{
