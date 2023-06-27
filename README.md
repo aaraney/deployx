@@ -9,6 +9,7 @@ with [compose-spec](https://github.com/compose-spec/compose-spec).
 
 - Compose file variable expansion (done by default)
 - Support for one or more alternate `.env` files
+- Support for container storage interface (CSI) [cluster volume](https://github.com/moby/moby/blob/master/docs/cluster_volumes.md) types
 
 ## Installing
 
