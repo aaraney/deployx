@@ -94,7 +94,7 @@ if [ "$install_as_plugin" = "y" ]; then
 
   sudo mkdir -p $install_path
 
-  mv deployx $install_path
+  sudo mv deployx $install_path
 
   echo "You can now use docker deployx"
 else
