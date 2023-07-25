@@ -18,19 +18,19 @@ with [compose-spec](https://github.com/compose-spec/compose-spec).
 Interactive install script:
 
 ```bash
-bash <(curl https://raw.githubusercontent.com/Rei-x/deployx/main/install.sh)
+bash <(curl https://raw.githubusercontent.com/aaraney/deployx/main/install.sh)
 ```
 
 Or non-interactive install as docker-plugin (requires sudo):
 
 ```bash
-curl -sL https://raw.githubusercontent.com/rei-x/deployx/main/install.sh | bash -s -- -y
+curl -sL https://raw.githubusercontent.com/aaraney/deployx/main/install.sh | bash -s -- -y
 ```
 
 Or non-interactive install just as a binary (./deployx):
 
 ```bash
-curl -sL https://raw.githubusercontent.com/rei-x/deployx/main/install.sh | bash -s -- -n
+curl -sL https://raw.githubusercontent.com/aaraney/deployx/main/install.sh | bash -s -- -n
 ```
 
 ### Building from source

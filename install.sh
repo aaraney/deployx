@@ -17,7 +17,7 @@ while getopts ":yn" opt; do
   esac
 done
 
-url="https://api.github.com/repos/rei-x/deployx/releases/latest"
+url="https://api.github.com/repos/aaraney/deployx/releases/latest"
 
 os=$(uname -s)
 arch=$(uname -m)
