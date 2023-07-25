@@ -13,6 +13,26 @@ with [compose-spec](https://github.com/compose-spec/compose-spec).
 
 ## Installing
 
+### Prebuilt binaries
+
+Interactive install script:
+
+```bash
+bash <(curl https://raw.githubusercontent.com/aaraney/deployx/main/install.sh)
+```
+
+Or non-interactive install as docker-plugin (requires sudo):
+
+```bash
+curl -sL https://raw.githubusercontent.com/aaraney/deployx/main/install.sh | bash -s -- -y
+```
+
+Or non-interactive install just as a binary (./deployx):
+
+```bash
+curl -sL https://raw.githubusercontent.com/aaraney/deployx/main/install.sh | bash -s -- -n
+```
+
 ### Building from source
 
 Building from source requires go and make be installed. Install go using either your package manager
