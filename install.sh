@@ -88,13 +88,24 @@ if [ "$install_without_plugin" = true ]; then
 fi
 
 if [ "$install_as_plugin" = "y" ]; then
-  install_path=$HOME/.docker/cli-plugins
+  install_path="${HOME}"/.docker/cli-plugins
 
   echo "Installing deployx to $install_path"
 
-  sudo mkdir -p $install_path
+  mkdir -p "${install_path}" 2>/dev/null || sudo mkdir -p "${install_path}"
 
-  sudo mv deployx $install_path
+  if [ $? -ne 0 ]; then
+    echo "Failed to create directory $install_path"
+    exit 1
+  fi
+
+  # move deployx to installation path
+  mv deployx "${install_path}"/docker-deployx 2>/dev/null || sudo mv deployx "${install_path}"/docker-deployx
+
+  if [ $? -ne 0 ]; then
+    echo "Failed to move deployx to $install_path"
+    exit 1
+  fi
 
   echo "You can now use docker deployx"
 else
